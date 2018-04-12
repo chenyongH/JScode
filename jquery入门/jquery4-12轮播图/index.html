@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<script src="jquery2.0.3.js"></script>
+	<script src="first.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 900px;
+			height: 500px;
+			/*border: 1px solid #f40;*/
+			margin: 10px auto;
+		}
+		.img{
+			
+			list-style: none;
+			height: 500px;
+			width: 900px;
+			/*border: 1px solid #000;*/
+		}
+		li{
+			display: none;
+		}
+		.img img{
+			
+			width: 900px;
+			height: 500px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.circle{
+			list-style: none;
+			width: 260px;
+			height: 30px;
+			/*border: 1px solid #f40;*/
+			position: absolute;
+			bottom: 10px;
+			left: 320px;
+
+		}
+		.circle li{
+			display: block;
+			cursor: pointer;
+			background-color: #fff;
+			width: 20px;
+			height: 20px;
+			border-radius: 10px;
+			background: #ccc;
+			float: left;
+			margin-left: 20px;
+		}
+		span{
+			cursor: pointer;
+			display: inline-block;
+			/*border: 1px solid #f40;*/
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top: 200px;
+			background-size: 100% 100%;
+		}
+		.left{
+			background-image: url(img/left.png);
+			left: 20px;
+			}
+		.right{
+			background-image: url(img/right.png);
+			right: 20px;
+		}
+		 .show1{
+			display: block;
+		}
+		.circle .show2{
+			background-color: #f40;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="img">
+			<li><a href="#"><img src="img/1.png" alt=""></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/5.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/6.jpg" alt=""></a></li>
+		</ul>
+		<ul class="circle">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div class="button">
+			<span class="left"></span>
+			<span class="right"></span>
+		</div>
+	</div>
+</body>
+</html>
