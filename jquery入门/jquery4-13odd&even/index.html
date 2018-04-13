@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格隔行变色</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		table{
+			border-collapse: collapse;
+			width: 500px;
+			height: 500px;
+			border: 1px solid #f40;
+			margin: 50px auto;
+		}
+		table tr{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #f50;
+			border-collapse: collapse;
+		}
+		table tr td{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #f50;
+			border-collapse: collapse;
+		}
+	</style>
+	<script src="jquery2.0.3.js"></script>
+	<script>
+		$(function(){
+			// 隔行变色
+			// $('tr:odd').css('background-color','#f60');
+			// $('tr:even').css('background-color','#f0f');
+			//四方格
+			$('td:odd').css('background-color','#eee');
+			$('td:even').css('background-color','#acf')
+
+
+		})
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</html>
