@@ -1,0 +1,18 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.box{
+	list-style: none;
+	height: 30px;
+	width: 400px;
+	margin: 50px auto;
+}
+.box li{
+	line-height: 30px;
+	text-align: center;
+	height: 30px;
+	width: 100px;
+	background-color: #555;
+	float: left;
+}
