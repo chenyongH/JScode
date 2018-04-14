@@ -18,7 +18,8 @@
 				<input type="text" name="search" class="search-text">
 			</div>
 			<div class="button">
-				<input type="button" value="搜索" id="search-button">
+				<!-- <input type="button" value="搜索" id="search-button"> -->
+				<button id="search-button">搜索</button>
 			</div>
 			<div class="member">
 			
@@ -29,7 +30,35 @@
 		</div>
 	</div>
 	<div id="reg" title="会员注册">
-		表单验证
+		<p>
+			<label for="user">姓名：</label>
+			<input type="text" name="user" id="user" title="请输入用户名，不少于俩个字符！" />
+			<span class="caution">*</span>
+		</p>
+		<p>
+			<label for="password">密码：</label>
+			<input type="text" name="password" id="password" title="请输入密码，不少于6个字符！"/>
+			<span class="caution">*</span>
+		</p>
+		<p>
+			<label for="password2">确认密码：</label>
+			<input type="text" name="password2" id="password2" />
+			<span class="caution">*</span>
+		</p>
+		<p>
+			<label for="mail">邮箱：</label>
+			<input type="text" name="mail" id="mail" title="请输入正确的邮箱地址！"/>
+			<span class="caution">*</span>
+		</p>
+		<p>
+			<label for="date">生日：</label>
+			<input type="text" name="date" readonly="readonly" id="date" />
+		</p>
+		<p class="reg-sex">
+			<label>性别：</label>
+			<input type="radio" value="male" name="sex" id="male"><label for="male" checked="checked">男</label></input><input type="radio"value="female" name="sex" id="female"><label for="female">女</label>
+		</p>
+
 	</div>
 </body>
 </html>
