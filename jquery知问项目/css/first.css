@@ -100,6 +100,7 @@ body{
 }
 /*会员注册表单*/
 #reg{
+	overflow-x:hidden;
 	padding: 0;
 	margin: 10px 0 0 10px;
 }
@@ -115,6 +116,15 @@ body{
 	width: 60px;
 	/*border: 1px solid #f40;*/
 }
+#reg ol{
+	margin: 0;
+	padding: 0 0 5px 10px;
+}
+#reg ol li{
+	color: #f00;
+	height: 20px;
+
+}
 #reg p>span{
 	color: #f00;
 	float: right;
@@ -126,6 +136,9 @@ body{
 }
 #reg .reg-sex span{
 	background-color: rgba(0,0,0,0);
+}
+#reg .reg-span{
+	color: #666;
 }
 .ui-datepicker-title{
 	color: #3c3c3c;
@@ -153,4 +166,12 @@ body{
 }
 .ui-datepicker-title select{
 	color: #666;
+}
+
+#loading {
+	/*background: url(img/timg.gif) no-repeat;*/
+	line-height: 25px;
+	font-size: 14px;
+	color: #666;
+	text-indent: 20px;
 }

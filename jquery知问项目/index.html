@@ -8,6 +8,8 @@
 	<link rel="shortcut icon" type="image/y-icon" href="img/title.ico">
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.ui.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/jquery-form.js"></script>
 	<script src="js/first.js"></script>
 </head>
 <body>
@@ -29,15 +31,16 @@
 			</div>
 		</div>
 	</div>
-	<div id="reg" title="会员注册">
+	<form id="reg" action="123.html" title="会员注册">
+		<ol class="reg-error"></ol>
 		<p>
 			<label for="user">姓名：</label>
-			<input type="text" name="user" id="user" title="请输入用户名，不少于俩个字符！" />
+			<input type="text" name="user" id="user" />
 			<span class="caution">*</span>
 		</p>
 		<p>
 			<label for="password">密码：</label>
-			<input type="text" name="password" id="password" title="请输入密码，不少于6个字符！"/>
+			<input type="text" name="password" id="password"/>
 			<span class="caution">*</span>
 		</p>
 		<p>
@@ -46,19 +49,19 @@
 			<span class="caution">*</span>
 		</p>
 		<p>
-			<label for="mail">邮箱：</label>
-			<input type="text" name="mail" id="mail" title="请输入正确的邮箱地址！"/>
+			<label for="email">邮箱：</label>
+			<input type="text" name="email" id="email"/>
 			<span class="caution">*</span>
 		</p>
 		<p>
 			<label for="date">生日：</label>
-			<input type="text" name="date" readonly="readonly" id="date" />
+			<input type="text" name="birthday" readonly="readonly" id="date" />
 		</p>
 		<p class="reg-sex">
 			<label>性别：</label>
 			<input type="radio" value="male" name="sex" id="male"><label for="male" checked="checked">男</label></input><input type="radio"value="female" name="sex" id="female"><label for="female">女</label>
 		</p>
-
-	</div>
+	</form>
+	<div id="loading">数据上传中...</div>
 </body>
 </html>
