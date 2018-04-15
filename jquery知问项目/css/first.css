@@ -104,6 +104,7 @@ body{
 	margin: 10px 0 0 10px;
 }
 #reg p{
+	position: relative;
 	font-size: 14px;
 	width: 260px;
 	height: 30px;
@@ -128,4 +129,28 @@ body{
 }
 .ui-datepicker-title{
 	color: #3c3c3c;
+}
+/*日历按钮css手动添加样式*/
+.ui-datepicker-trigger{
+	height: 30px;
+	width: 52px;
+	position: absolute;
+	right: -17px;
+	color: #3c3c3c;
+	float: right;
+	margin-top: 0px;
+}
+.ui-datepicker-trigger .ui-button-text{
+	line-height: 25px;
+	height: 25px;
+	margin: 0;
+	padding: 0;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year{
+	width: 36%;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.ui-datepicker-title select{
+	color: #666;
 }
