@@ -1,5 +1,5 @@
 <?php
-	sleep(2);
+	sleep(1);
 	require 'config.php';
 
 	$query = "INSERT INTO user (user, password, email, sex, birthday, date) VALUES ('{$_POST['user']}',sha1('{$_POST['password']}'),'{$_POST['email']}','{$_POST['sex']}','{$_POST['birthday']}',NOW())";

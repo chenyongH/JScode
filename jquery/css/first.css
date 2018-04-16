@@ -99,45 +99,45 @@ body{
 	background-color: rgba(0,0,0,0);
 }
 /*会员注册表单*/
-#reg{
+#reg,#login{
 	overflow-x:hidden;
 	padding: 0;
 	margin: 10px 0 0 10px;
 }
-#reg p{
+#reg p,#login p{
 	position: relative;
 	font-size: 14px;
 	width: 260px;
 	height: 30px;
 	margin: 10px 5px;
 }
-#reg p label{
+#reg p label,#login p label{
 	display: inline-block;
 	width: 60px;
 	/*border: 1px solid #f40;*/
 }
-#reg ol{
+#reg ol,#login ol{
 	margin: 0;
 	padding: 0 0 5px 10px;
 }
-#reg ol li{
+#reg ol li,#login ol li{
 	color: #f00;
 	height: 20px;
 
 }
-#reg p>span{
+#reg p>span,#login p>span{
 	color: #f00;
 	float: right;
 	margin-top: 6px;
 }
-#reg p input{
+#reg p input,#login p input{
 	height: 25px;
 	width: 150px;
 }
-#reg .reg-sex span{
+#reg .reg-sex span,#login .reg-sex span{
 	background-color: rgba(0,0,0,0);
 }
-#reg .reg-span{
+#reg .reg-span,#login .reg-span{
 	color: #666;
 }
 .ui-datepicker-title{
@@ -169,9 +169,25 @@ body{
 }
 
 #loading {
-	/*background: url(img/timg.gif) no-repeat;*/
+	background: url(../img/timg.gif) no-repeat;
+	background-size: 50px 50px;
 	line-height: 25px;
 	font-size: 14px;
 	color: #666;
-	text-indent: 20px;
+	text-indent: 50px;
+}
+
+#login .last-p{
+	margin-left: 110px;
+}
+#login .last-p input{
+	width: 15px;
+	height: 15px;
+	vertical-align: bottom;
+}
+#login .last-p label{
+	color: #666;
+	width: 100px;
+	height: 15px;
+
 }
