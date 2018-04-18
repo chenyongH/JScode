@@ -43,6 +43,56 @@ $(function(){
 		width:180,
 		height:50,
 	}).parent().find('.ui-widget-header').hide();
+// 提问时候的弹窗
+	$('#error').dialog({
+		autoOpen:false,
+		modal:true,
+		closeOnEscape:false,
+		resizable:false,
+		draggable:false,
+		width:180,
+		height:50,
+	}).parent().find('.ui-widget-header').hide();
+
+	// 提问输入问题弹窗
+	$('#question').dialog({
+		autoOpen:false,
+		modal:true,
+		closeOnEscape:false,
+		resizable:false,
+		draggable:false,
+		width:500,
+		height:360,
+		buttons:{
+			"提交":function(){
+				$(this).ajaxSubmit({
+					url:'add_content.php',
+					type:'POST',
+					data:{
+						user:$.cookie('user'),
+					},
+					beforeSubmit:function(formDate,jqForm,options){
+						$('#loading').dialog('open');
+						// $('#question').dialog('widget').find('button').eq(1).button('disable');
+					},
+					success:function(responseText,statusText){
+						if(responseText){
+							$('#loading').dialog('open');
+							// $('#question').dialog('widget').find('button').eq(1).button('enable');
+							$('#loading').html('数据上传成功!');
+							setTimeout(function(){
+								$('#question').dialog('close');
+								$('#loading').dialog('close');
+								$('#content').html('');
+								$('#question').resetForm();
+								$('#loading').html('数据上传中...');
+							},2000);
+						}
+					},
+				});
+			},
+		},
+	});
 
 	// 表单注册
 		$('#reg').dialog({
@@ -167,8 +217,6 @@ $(function(){
 		// 	var email = ".com$";
 		// 	return this.optional(element)||(email.test(value));
 		// },'请输入正确的email地址');
-
-
 	$('#reg-a').click(function(){
 		$('#reg').dialog('open');
 		$('#reg').resetForm();
@@ -315,11 +363,110 @@ $(function(){
 			},
 		},
 	});
-
 	$('#login-a').click(function(){
 		$('#login').dialog('open');
 		$('#login').resetForm();
 		$('#login span').removeClass('login-span');
 	});
+
+
+
+	// tabs选项卡功能
+	$('#tabs').tabs();
+	$('#accordion').accordion();
+	$('#question-button').click(function(){
+		if($.cookie('user')){
+			$('#question').dialog('open');
+		}else{
+			$('#error').dialog('open');
+			setTimeout(function(){
+				$('#error').dialog('close');
+				$('#login').dialog('open');
+			},1000);
+		}
+	});
+
+	//提问区
+	$('#content').trumbowyg({
+		 fullscreenable: false,
+		 closable: false,
+		 btns: ['bold', 'italic', '|', 'insertImage'],
+	});
+	
+
+
+// 数据从数据库中取出并展示show
+	
+	$.ajax({
+		url:'show_content.php',
+		type:'POST',
+		success:function(response,status,xhr){
+			var json = $.parseJSON(response);
+			var html = '';
+			var arr = [];
+			$.each(json,function(index,value){
+				html += '<h4>'+ value.user +'&nbsp&nbsp发表于：'+ value.date +'</h4><h3>'+ value.title +'</h3><div class="div-editor">'+ value.content +'</div><div class="bottom"><span class="comment">0条评论</span><span class="down">显示全部</span><span class="up">收起</span><span class="all" style="display:none">已全部展示</span></div><hr noshade="noshade" size="1" /><div class="comment-list"></div>';
+			});
+			$('.content').append(html);
+			$.each($('.div-editor'),function(index,value){
+				arr[index] = $(value).height();
+				if($(value).height() > 60){
+					$(value).next('.bottom').find('.up').hide();
+
+				}else{
+					$(value).next('.bottom').find('.up').hide();
+					$(value).next('.bottom').find('.down').hide();
+					$(value).next('.bottom').find('.all').css('display','inline-block');
+				}
+				$(value).height(60);
+			});
+			$.each($('.bottom .down'),function(index,value){
+				$(this).click(function(){
+					$(this).parent().prev().height(arr[index]);
+					$(this).hide();
+					$(this).parent().find('.up').show();
+				});
+			});
+			$.each($('.bottom .up'),function(index,value){
+				$(this).click(function(){
+					$(this).parent().prev().height(60);
+					$(this).hide();
+					$(this).parent().find('.down').show();
+				});
+			});
+			// 评论区
+			$.each($('.bottom'),function(index,value){
+				$(this).on('click','.comment',function(){
+					if($.cookie('user')){
+						if(!$('.comment-list').eq(index).has('form').length){
+							$('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="button" value="发表" /></dd></dl></form>');
+						}
+
+						if($('.comment-list').eq(index).is(':hidden')){
+							$('.comment-list').eq(index).show();
+						}else{
+
+							$('.comment-list').eq(index).hide();
+						}
+					}else{
+						$('#error').dialog('open');
+						setTimeout(function(){
+							$('#error').dialog('close');
+							$('#login').dialog('open');
+						},1000);
+					}
+				})
+			});
+		},
+	});
+
+
+	
+
+
+
+
+
+
 
 })

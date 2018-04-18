@@ -82,6 +82,9 @@ body{
 	font-size: 14px;
 	text-decoration: none;
 	color: #666;
+	float: right;
+	margin-left: 10px;
+
 }
 /*ui的css手动改变*/
 .ui-dialog .ui-dialog-title{
@@ -99,7 +102,7 @@ body{
 	background-color: rgba(0,0,0,0);
 }
 /*会员注册表单*/
-#reg,#login{
+#reg,#login,#question{
 	overflow-x:hidden;
 	padding: 0;
 	margin: 10px 0 0 10px;
@@ -114,7 +117,23 @@ body{
 #reg p label,#login p label{
 	display: inline-block;
 	width: 60px;
-	/*border: 1px solid #f40;*/
+}
+#question{
+	overflow: hidden;
+}
+#question p{
+	width: 490px;
+	height: 40px;
+	margin-top: 15px;
+}
+#question p label{
+	font-size: 16px;
+	color: #666;
+	display: inline-block;
+}
+#question p input{
+	height: 30px;
+	border-radius: 5px;
 }
 #reg ol,#login ol{
 	margin: 0;
@@ -134,10 +153,10 @@ body{
 	height: 25px;
 	width: 150px;
 }
-#reg .reg-sex span,#login .reg-sex span{
+#reg .reg-sex span,#login .reg-sex span,#question .question-sex span{
 	background-color: rgba(0,0,0,0);
 }
-#reg .reg-span,#login .reg-span{
+#reg .reg-span,#login .reg-span,#question .question-span{
 	color: #666;
 }
 .ui-datepicker-title{
@@ -176,6 +195,12 @@ body{
 	color: #666;
 	text-indent: 50px;
 }
+#error {
+	line-height: 25px;
+	font-size: 16px;
+	color: #666;
+	text-indent: 50px;
+}
 
 #login .last-p{
 	margin-left: 110px;
@@ -190,4 +215,133 @@ body{
 	width: 100px;
 	height: 15px;
 
+}
+/*tabs选项卡功能*/
+#main{
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+#main .main-left{
+	width: 850px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#main .main-right{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#tabs{
+	width: 850px;
+	/*margin-right: 10px;*/
+	float: left;
+}
+#accordion{
+	width: 300px;
+	float: right;
+}
+#question-button{
+	position: absolute;
+	top: 0;
+	left: 620px;
+}
+
+/*发表内容*/
+
+#main .main-left .content{
+
+	width: 850px;
+	margin-top: 120px;
+}
+#main .main-left .content h4{
+	margin-top: 40px;
+	color: #666;
+}
+#main .main-left .content h3{
+	color: #f40;
+	font-size: 16px;
+	font-width: bold;
+	margin-top: 5px;
+}
+#main .main-left .content .div-editor{
+	margin: 10px auto;
+	width: 98%;
+	line-height: 20px;
+	font-size: 14px;
+	overflow: hidden;
+	/*border: 1px solid #ccc;*/
+	text-indent: 40px;
+}
+#main .main-left .content .bottom{
+	position: relative;
+	width: 60%;
+	margin: 5px auto;
+	color: #777;
+	margin-bottom: 3px;
+}
+#main .main-left .content .bottom .down{
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+#main .main-left .content .bottom .up{
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+#main .main-left .content .bottom .all{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#main .main-left .content hr{
+	margin-bottom: 5px;
+}
+/*评论区*/
+#main .main-left .content .bottom .comment{
+	cursor: pointer;
+}
+.comment-list{
+	border: 1px solid #ccc;
+	width: 800px;
+	margin: 0 auto;
+}
+.comment-list dl{
+	margin: 5px 10px;
+	border-bottom: 1px solid #ccc;
+}
+.comment-list dl dt{
+	color: #078558;
+}
+.comment-list dl dd{
+	color: #666;
+	font-size: 12px;
+}
+.comment-list .comment-text dt .textarea{
+	width: 98%;
+	height: 60px;
+	padding: 5px;
+	font-size: 12px;
+	color: #555;
+	margin-bottom: 35px;
+	resize: none;
+} 
+.comment-list .comment-text{
+	position:relative;
+}
+.comment-list .comment-text input{
+	position: absolute;
+	right: 5px;
+	top: 75px;
+	width: 100px;
+	height: 30px;
+	margin-bottom: 5px;
+}
+.comment-list{
+	display: none;
 }
