@@ -6,12 +6,6 @@ $(function(){
 	});
 	$('#header input').button();
 
-	// cookie
-
-	// $.cookie('user2','aa',{
-	// 	expires:3
-	// });
-
 	$('#member,#loginout').hide();
 
 	if($.cookie('user')){
@@ -23,16 +17,11 @@ $(function(){
 		$('#reg-a,#login-a').show();
 	}
 	$('#loginout').click(function(){
-		// $(this).css('color','red');
 		$.removeCookie('user');
-		// window.location.herf = '127.0.0.1/jquery/index.html';
 		$('#member,#loginout').hide();
 		
 		$('#reg-a,#login-a').show();
 	});
-
-
-
 	// loading 数据提交时的弹窗效果
 	$('#loading').dialog({
 		autoOpen:false,
@@ -43,7 +32,7 @@ $(function(){
 		width:180,
 		height:50,
 	}).parent().find('.ui-widget-header').hide();
-// 提问时候的弹窗
+    // 提问时候的弹窗
 	$('#error').dialog({
 		autoOpen:false,
 		modal:true,
@@ -213,10 +202,6 @@ $(function(){
 				},
 			},
 		});
-		// $.validator.addMethod('com',function(){
-		// 	var email = ".com$";
-		// 	return this.optional(element)||(email.test(value));
-		// },'请输入正确的email地址');
 	$('#reg-a').click(function(){
 		$('#reg').dialog('open');
 		$('#reg').resetForm();
@@ -386,17 +371,14 @@ $(function(){
 		}
 	});
 
-	//提问区
+	//提问区编辑器设置
 	$('#content').trumbowyg({
 		 fullscreenable: false,
 		 closable: false,
 		 btns: ['bold', 'italic', '|', 'insertImage'],
 	});
-	
 
-
-// 数据从数据库中取出并展示show
-	
+   // 数据从数据库中取出并展示show
 	$.ajax({
 		url:'show_content.php',
 		type:'POST',
@@ -405,7 +387,7 @@ $(function(){
 			var html = '';
 			var arr = [];
 			$.each(json,function(index,value){
-				html += '<h4>'+ value.user +'&nbsp&nbsp发表于：'+ value.date +'</h4><h3>'+ value.title +'</h3><div class="div-editor">'+ value.content +'</div><div class="bottom"><span class="comment">0条评论</span><span class="down">显示全部</span><span class="up">收起</span><span class="all" style="display:none">已全部展示</span></div><hr noshade="noshade" size="1" /><div class="comment-list"></div>';
+				html += '<h4>'+ value.user +'&nbsp&nbsp发表于：'+ value.date +'</h4><h3>'+ value.title +'</h3><div class="div-editor">'+ value.content +'</div><div class="bottom"><span class="comment" data-id="'+ value.id +'">'+ value.count +'条评论</span><span class="down">显示全部</span><span class="up">收起</span><span class="all" style="display:none">已全部展示</span></div><hr noshade="noshade" size="1" /><div class="comment-list"></div>';
 			});
 			$('.content').append(html);
 			$.each($('.div-editor'),function(index,value){
@@ -435,19 +417,200 @@ $(function(){
 				});
 			});
 			// 评论区
+				// $.each($('.bottom'),function(index,value){
+				// 	alert(this);
+				// 	$(this).on('click','.comment',function(){
+
+				// 		if($.cookie('user')){
+
+				// 			// if(!$('.comment-list').eq(index).has('form').length){
+				// 			// 	// var comment_this = this;
+				// 			// 	// 显示评论
+				// 			// 	// $.ajax({
+									// url:'show_comment.php',
+									// type:'POST',
+									// beforeSend:function(jqXHR,settings){
+									// 	// alert('11');
+									// 	$('.comment-list').eq(index).append('<dl class="comment-loading"><dd>正在加载..</dd></dl>');
+										
+									// },
+				// 			// 	// 	success:function(respones,status){
+				// 			// 	// 		$('.comment-list').eq(index).find('.comment-loading').hide();
+				// 			// 	// 		$('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="hidden" name="titleid" value="'+ $(comment_this).attr('data-id') +'" /><input type="hidden" name="user" value="'+ $.cookie('user') +'" /><input type="button" value="发表" /></dd></dl></form>');
+				// 			// 	// 		var json_comment = $.parseJSON(response);
+				// 			// 	// 		$.each(json_comment,function(index2,value){
+				// 			// 	// 			// console.log(value)
+				// 			// 	// 			$('.comment-list').eq(index).append('<dl class="comment_content"><dt>'+ value.user +'</dt><dd>'+ value.comment +'</dd><dd class="date">'+ value.date +'</dd></dl>');
+				// 			// 	// 		});
+				// 			// 	// 		// $.ajax({
+				// 			// 	// 		// 	url:'show_comment.php',
+				// 			// 	// 		// 	type:'POST',
+				// 			// 	// 		// 	success:function(response1,status){
+				// 			// 	// 		// 		$('.comment-list').eq(index).find('.comment-loading').hide();
+				// 			// 	// 		// 		console.log(response1);
+				// 			// 	// 		// 		var json_comment = $.parseJSON(response1);
+				// 			// 	// 		// 		$.each(json_comment,function(index2,value){
+				// 			// 	// 		// 			// console.log(value)
+				// 			// 	// 		// 			$('.comment-list').eq(index).append('<dl class="comment_content"><dt>'+ value.user +'</dt><dd>'+ value.comment +'</dd><dd class="date">'+ value.date +'</dd></dl>');
+				// 			// 	// 		// 		});
+				// 			// 	// 		// 		$('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="hidden" name="titleid" value="'+ $(comment_this).attr('data-id') +'" /><input type="hidden" name="user" value="'+ $.cookie('user') +'" /><input type="button" value="发表" /></dd></dl></form>');
+												
+				// 			// 	// 		// 	},
+				// 			// 	// 		// });	
+				// 			// 	// 	},
+				// 			// 	});
+				// 			// $('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="hidden" name="titleid" value="'+ $(comment_this).attr('data-id') +'" /><input type="hidden" name="user" value="'+ $.cookie('user') +'" /><input type="button" value="发表" /></dd></dl></form>');
+				// 				// 评论发布// 评论提交发表
+				// 				$('.comment-list').eq(index).find('input[type=button]').button();
+				// 				$('.comment-list').eq(index).find('input[type=button]').click(function(){
+				// 					var _this = this;
+									// $('.comment-list').eq(index).find('form').ajaxSubmit({
+									// 	url:'add_comment.php',
+									// 	type:'POST',
+									// 	beforeSubmit:function(formDate,jqForm,options){
+									// 		$('#loading').dialog('open');
+									// 		$(_this).button('disable');
+									// 		$('#loading').html('发表中');
+									// 	},
+										// success:function(responseText,statusText){
+										// 	if(responseText){
+										// 		$(_this).button('enable');
+										// 		$('#loading').html('发表成功!');						
+										// 		setTimeout(function(){
+										// 			var date = new Date();
+										// 			$('.comment-list').eq(index).prepend('<dl class="comment_content"><dt>'+ $.cookie('user') +'</dt><dd>'+ $('.comment-list').eq(index).find('textarea').val() +'</dd><dd>'+ date.getFullYear()+'-'+ (date.getMonth()+1)+'-'+ date.getDate()+ ' '+ date.getHours()+':'+ date.getMinutes()+ ':' + date.getSeconds() +'</dd></dl>')
+										// 			$('.comment-list').eq(index).find('form').resetForm();
+										// 			$('#loading').dialog('close');
+													
+										// 			$('#loading').html('发表中...');	
+										// 		},500);
+										// 	}
+										// },
+				// 					});
+				// 				});
+							// if($('.comment-list').eq(index).is(':hidden')){
+							// 	$('.comment-list').eq(index).show();
+							// }else{
+
+							// 	$('.comment-list').eq(index).hide();
+							// }	
+				// 		}else{
+							// $('#error').dialog('open');
+							// setTimeout(function(){
+							// 	$('#error').dialog('close');
+							// 	$('#login').dialog('open');
+							// },1000);
+				// 		}
+				// 	})
+				// });
+			// 重写代码
 			$.each($('.bottom'),function(index,value){
 				$(this).on('click','.comment',function(){
+					var comment_this = this;
 					if($.cookie('user')){
+						// 通过点击新增评论区输入区域与提交按钮
 						if(!$('.comment-list').eq(index).has('form').length){
-							$('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="button" value="发表" /></dd></dl></form>');
-						}
+							// 判断是否加载，并加载评论和输入框
+							$.ajax({
+								url:'show_comment.php',
+								type:'POST',
+								data:{
+									titleid:$(comment_this).attr('data-id'), 
+								},
+								beforeSend:function(jqXHR,settings){
+									$('.comment-list').eq(index).append('<dl class="comment-loading"><dd>正在加载..</dd></dl>');
+									
+								},
+								success:function(response,status){
+									$('.comment-list').eq(index).find('.comment-loading').hide();
+									// 评论显示
+									var json_comment = $.parseJSON(response);
+									var count = 0;
+									$.each(json_comment,function(index2,value){
+										count = value.count;
+										$('.comment-list').eq(index).append('<dl class="comment_content"><dt>'+ value.user +'</dt><dd>'+ value.comment +'</dd><dd class="date">'+ value.date +'</dd></dl>');
+									});
+									// 加载更多按钮设置
+									$('.comment-list').eq(index).append('<dl><dd><span class="load-more">加载更多</span></dd></dl>');
+									var page = 2;
+									// 判断评论数少于2条的时候对加载更多按钮的设置
+									if(page > count){
+										$('.comment-list').eq(index).find('.load-more').off('click');
+										$('.comment-list').eq(index).find('.load-more').hide();
+										// $('.comment-list').eq(index).find('.load-more').html('加载完成');
+									}
+									$('.comment-list').eq(index).find('.load-more').button().css('margin-bottom','5px').on('click',function(){
+										$('.comment-list').eq(index).find('.load-more').button('disable');
+										// 加载更多按钮的ajax效
+										$.ajax({
+											url:'show_comment.php',
+											type:'POST',
+											data:{
+												titleid:$(comment_this).attr('data-id'),
+												page:page,
+											},
+											beforeSend:function(jqXHR,settings){
+												$('.comment-list').eq(index).find('.load-more').html('加载中...');
+											},
+											success:function(response,status){
+												$('.comment-list').eq(index).find('.load-more').button('enable');
+												$('.comment-list').eq(index).find('.load-more').html('加载更多');
+												var json_comment_more = $.parseJSON(response);
 
+												$.each(json_comment_more,function(index3,value){
+													$('.comment-list').eq(index).find('.comment_content').last().after('<dl class="comment_content"><dt>'+ value.user +'</dt><dd>'+ value.comment +'</dd><dd class="date">'+ value.date +'</dd></dl>');
+												});
+												page ++;
+												if(page > count){
+													$('.comment-list').eq(index).find('.load-more').off('click');
+													$('.comment-list').eq(index).find('.load-more').hide();
+													// $('.comment-list').eq(index).find('.load-more').html('加载完成');
+												}
+											},
+										});
+									});
+									$('.comment-list').eq(index).append('<form><dl class="comment-text"><dt><textarea name="comment" class="textarea"></textarea></dt><dd><input type="hidden" name="titleid" value="'+ $(comment_this).attr('data-id') +'" /><input type="hidden" name="user" value="'+ $.cookie('user') +'" /><input type="button" value="发表" /></dd></dl></form>');
+									// 按钮的效果
+									$('.comment-list').eq(index).find('input[type=button]').button();
+									// 评论发表的按钮点击效果
+									$('.comment-list').eq(index).find('input[type=button]').click(function(){
+										// 按钮提交评论数据
+										var _this = this;
+										$('.comment-list').eq(index).find('form').ajaxSubmit({
+											url:'add_comment.php',
+											type:'POST',
+											beforeSubmit:function(formDate,jqForm,options){
+												$('#loading').dialog('open');
+												$(_this).button('disable');
+												$('#loading').html('发表中');
+											},
+											success:function(responseText,statusText){
+												if(responseText){
+													$(_this).button('enable');
+													$('#loading').html('发表成功!');						
+													setTimeout(function(){
+														var date = new Date();
+														$('.comment-list').eq(index).prepend('<dl class="comment_content"><dt>'+ $.cookie('user') +'</dt><dd>'+ $('.comment-list').eq(index).find('textarea').val() +'</dd><dd>'+ date.getFullYear()+'-'+ (date.getMonth()+1)+'-'+ date.getDate()+ ' '+ date.getHours()+':'+ date.getMinutes()+ ':' + date.getSeconds() +'</dd></dl>')
+														$('.comment-list').eq(index).find('form').resetForm();
+														$('#loading').dialog('close');
+														
+														$('#loading').html('发表中...');	
+													},500);
+												}
+											}, 
+										});	
+									})
+								},
+							});
+						}
+						// 评论点击显示与隐藏效果
 						if($('.comment-list').eq(index).is(':hidden')){
 							$('.comment-list').eq(index).show();
 						}else{
 
 							$('.comment-list').eq(index).hide();
 						}
+						
 					}else{
 						$('#error').dialog('open');
 						setTimeout(function(){
@@ -455,7 +618,7 @@ $(function(){
 							$('#login').dialog('open');
 						},1000);
 					}
-				})
+				});
 			});
 		},
 	});
