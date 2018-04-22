@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>飞翔的小鸟</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			
+		}
+		img{
+			width: 100px;
+			height: 100px;
+			transform: rotateY(180deg);
+		}
+		.left{
+			transform: rotateY(180deg);
+		}
+		.right{
+			transform: rotateY(0deg);
+		}
+		.top{
+			transform: rotate(330deg);
+		}
+		.bottom{
+			transform: rotate(60deg);
+		}
+	</style>
+	<script src="jquery-1.10.2.js"></script>
+	<script src="first.js"></script>
+</head>
+<body>
+	<div><img src="img/bird.gif" alt=""></div>
+</body>
+</html>
