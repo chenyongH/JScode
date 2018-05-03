@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>胶囊式导航</title>
+	<script src="jquery3.3.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="holder.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style>
+		.col-sm-10{
+			/*background-color: red;*/
+			margin-left:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3 class="page-header">胶囊式导航</h3>
+		<div class="row">
+			<div class="col-sm-2">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="">导航</a></li>
+					<li><a href="">导航</a></li>
+					<li><a href="">导航</a></li>
+				</ul>
+			</div>
+		
+			<div class="col-sm-10 navs">
+				<img src="holder.js/100px200" alt="">
+			第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏内容第一栏	内容第一栏内容第一栏内容</div>
+			<div class="col-sm-10 navs">第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容第二栏内容</div>
+			<div class="col-sm-10 navs">
+				第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容第三栏内容
+			</div>
+		</div>
+	</div>
+	<script>
+		$('li').mouseover(function(){
+			// $('li').removeClass('active');
+			$(this).addClass('active');
+			$('li').not($(this)).removeClass('active');
+			var ind = $(this).index('li');
+			$('.navs').eq(ind).show();
+			$('.navs').not($('.navs').eq(ind)).hide();
+
+		})
+		$('.navs').hide();
+		$('.navs').eq(0).show()
+	</script>
+</body>
+</html>
