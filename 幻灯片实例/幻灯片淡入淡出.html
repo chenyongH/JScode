@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>幻灯片</title>
+	<script src="jquery.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.content{
+			width: 1100px;
+			height: 500px;
+			margin: 10px auto;
+			position: relative;
+		}
+		img{
+			width: 1100px;
+			height: 500px;
+			position: absolute;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<img src="img/1.jpg" alt="">
+		<img src="img/2.jpg" alt="">
+		<img src="img/3.jpg" alt="">
+		<img src="img/4.jpg" alt="">
+	</div>
+	<script>
+		setInterval(function(){
+			$('img').eq($('img').length-1).fadeOut(500,function(){
+				$(this).show().prependTo('.content')
+			})
+
+		},2000)
+	</script>
+</body>
+</html>

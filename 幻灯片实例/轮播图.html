@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>幻灯片</title>
+	<script src="jquery.js"></script>
+	<style>
+	body{
+		background-color: #ccc;
+	}
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.content{
+			position: relative;
+			height: 400px;
+			width: 1100px;
+			margin: 30px auto;
+			outline: 1px solid #f40;
+			overflow: hidden;
+		}
+		.img{
+			height: 400px;
+			width: 4400px;
+			position: relative;
+		}
+		.img img{
+			/*position: absolute;*/
+			float: left;
+			height: 400px;
+			width: 1100px;
+		}
+		/*.first{
+			margin-left: -1100px;
+		}*/
+		ul{
+			position: absolute;
+			top: 0;
+			left: 10px;
+			list-style:none;
+			height:20px;
+			width: 100px;
+			color: #000;
+		}
+		li{
+			float: left;
+			height:20px;
+			width: 20px;
+			color: #fff;
+			background-color: red;
+			text-align: center;
+			margin-left: 5px;
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="img">
+			<img src="img/1.jpg" alt="">
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpg" alt="">
+		</div>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	<script>
+		var timer;
+		var num = 0;
+		var play = function(){
+			timer = setInterval(function(){
+				num = num + 100;
+				$('img:first').addClass('active')
+				$('.active').css('margin-left',-num + 'px');
+				if(num == 1100){
+					clearInterval(timer);
+					$('.active').appendTo('.img').attr('style','');
+					$('img').removeClass('active');
+					num = 0;
+				}		
+			},50);
+		}
+		var timer2;
+		timer2 = setInterval(function(){
+			play();
+		},2000);
+		$('li').click(function(){
+			var sc = $(this).index();
+			// $('.img').not($('img').eq(sc)).removeClass('active');
+			$('img').stop().eq(sc).addClass('active');
+
+		})
+	</script>
+</body>
+</html>
