@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>个人简历</title>
+	<style>
+		body{
+			padding-top: 70px;
+		}
+		.myInfo img{
+			width: 100%;
+			height: 252px;
+		}
+	</style>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="jquery3.3.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+</head>
+<body>
+	<!-- 表头区域 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="navbar-brand">个人简历</div>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myNav">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#myModal" title="打印">打印</button>
+						<button type="button" class="btn btn-info navbar-btn" data-toggle="tooltip" data-placement="bottom" title="下载">下载</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- nav中的弹出框 -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+					<h3>打印简历</h3>
+				</div>
+				<div class="modal-body">打印预览等</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger" type="button" data-dismiss="modal">取消</button>
+					<button class="btn btn-primary" type="button" >确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 正文区域 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">个人信息</div>
+					<div class="panel-body myInfo">
+						<img src="img/me.jpg" alt="me" class="img-responsive img-rounded img-thumbnail">
+						<p class="text-center text-primary">陈勇</p>
+						<address>
+							<strong><kbd>Web前段</kbd></strong><br/>
+							<span class="glyphicon glyphicon-comment" title="WeChat"> chyg1996</span><br/>
+							<span class="glyphicon glyphicon-phone" title="Mobile"><i> 18355636025</i></span><br/>
+							<span class="glyphicon glyphicon-envelope" title="Email"><i> 528264030@qq.com</i></span><br/>
+							<span class="glyphicon glyphicon-education" title="WeChat"> 安庆师范大学</span><br/>
+							<span class="glyphicon glyphicon-home" title="Address"> 安徽 合肥，安庆</span><br/>
+						</address>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">技能展示</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-3">
+								<span class="text-muted">html/css</span>
+							</div>
+							<div class="col-sm-9">
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped active" style="width:85%;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<span class="text-success">javascript</span>
+							</div>
+							<div class="col-sm-9">
+								<div class="progress">
+									<div class="progress-bar progress-bar-success progress-bar-striped active" style="width:75%;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<span class="text-info">jquery</span>
+							</div>
+							<div class="col-sm-9">
+								<div class="progress">
+									<div class="progress-bar progress-bar-info progress-bar-striped active" style="width:65%;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<span class="text-warning">bootstrap</span>
+							</div>
+							<div class="col-sm-9">
+								<div class="progress">
+									<div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:77%;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<span class="text-danger">es6</span>
+							</div>
+							<div class="col-sm-9">
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger progress-bar-striped active" style="width:50%;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">联系我</div>
+					<div class="panel-body"></div>
+				</div>
+			</div>
+
+			<div class="col-sm-9">
+				<div class="jumbotron">个人简介内容</div>
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title">
+								<a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">工作经验</a>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title">
+								<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">教育经历</a>
+							</div>
+					
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="panel-title">
+								<a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">项目展示</a>
+							</div>
+							<div class="panel-collpase collapse collapseShow" id="collapseThree">
+								<div class="panel-body">
+									<div id="divCarousel" class="carousel slide" data-ride="carousel">
+										<ol class="carousel-indicators">
+											<li data-target="#divCarousel" data-slide-to="0" class="active"></li>
+											<li data-target="#divCarousel" data-slide-to="1"></li>
+											<li data-target="#divCarousel" data-slide-to="2"></li>
+										</ol>
+										<div class="carousel-inner">
+											<div class="item active">
+												<img src="img/1.jpg" alt="github" style="width:100%;height:400px;"	 class="img-responsive img-rounded">
+											</div>
+											<div class="item">
+												<img src="img/2.jpg" alt="2" style="width:100%;height:400px;" class="img-responsive img-rounded">
+											</div>
+											<div class="item">
+												<img src="img/3.jpg" style="width:100%;height:400px;" alt="3" class="img-responsive img-rounded">
+											</div>
+										</div>
+										<a href="#divCarousel" class="left carousel-control" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+										<a href="#divCarousel" class="right carousel-control" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+	<footer>
+		<nav class="navbar-default navbar-fixed-bottom text-center">
+			2018/5 &copy;陈勇
+		</nav>
+	</footer>
+	<script>
+		$(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+			$('.collapseShow').collapse()
+		})
+	</script>
+</body>
+</html>
