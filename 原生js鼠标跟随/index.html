@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生js鼠标跟随</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrap{
+			position: relative;
+			width: 1155px;
+			height: 450px;
+			margin: 50px auto;
+		}
+		.wrap ul li{
+			position:relative;
+			z-index:10;
+			list-style:none;
+			width:230px;
+			height:150px;
+			background:url("img/logo.png");
+			border:1px dotted #ccc;
+			float:left;
+			border-left:none;
+		}
+		.box{
+			position:absolute;
+			left:0px;
+			top:0px;
+			z-index:1;
+			width:230px;
+			height:150px;
+			background:#ccc;
+			opacity:0.3;
+			}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li style="background-position:0px 0px;"></li>
+			<li style="background-position:-230px 0px;"></li>
+			<li style="background-position:-460px 0px;"></li>
+			<li style="background-position:-690px 0px;"></li>
+			<li style="background-position:-920px 0px;"></li>
+			<li style="background-position:-1150px 0px;"></li>
+			<li style="background-position:-1380px 0px;"></li>
+			<li style="background-position:-1610px 0px;"></li>
+			<li style="background-position:-1840px 0px;"></li>
+			<li style="background-position:-2070px 0px;"></li>
+			<li style="background-position:-2300px 0px"></li>
+			<li style="background-position:-2530px 0px"></li>
+			<li style="background-position:-2760px 0px"></li>
+			<li style="background-position:-2990px 0px"></li>
+			<li style="background-position:-3220px 0px"></li>
+		</ul>
+		<div class="box"></div>
+	</div>
+	<script>
+		var oLi = document.getElementsByTagName("li");
+		var oBox = document.getElementsByClassName("box")[0];
+		for (var i=0;i<oLi.length ;i++ ){
+			oLi[i].onmouseenter = function(){
+				move(this,"background-position-y",-150,1000);
+				var _left = this.offsetLeft;
+				var _top = this.offsetTop;
+				move(oBox,"left",_left,500);
+				move(oBox,"top",_top,500);
+			}
+			oLi[i].onmouseout = function(){
+				move(this,"background-position-y",0,1000);
+			}
+		}
+		function move(obj,attr,value,time){
+			var nowTime = new Date();//获取当前的时间
+			var startValue = parseFloat(getStyle(obj,attr));//获取对象属性的初始值
+			
+			var timer = setInterval(function(){//定时器不断的加载里面的代码
+					var n = (new Date() - nowTime)/time;
+					if (n >= 1)
+					{
+						n = 1;
+						clearInterval(timer);//清楚定时器
+					}
+					obj.style[attr] = startValue + n*(value - startValue) + "px";
+					//console.log(getStyle(obj,attr));
+				},1000/60);//在1000/60毫秒之后加载
+			
+			//封装一个方法来获取对象属性的初始值
+			function getStyle(obj,attr){
+				return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+			}
+		}
+	</script>
+</body>
+</html>
