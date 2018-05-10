@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹幕</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow-x: hidden;
+		}
+		.bottom{
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 100px;
+			background-color: #ccc;
+		}
+		.content{
+			position: relative;
+			height: 100px;
+			width: 600px;
+			margin: 0 auto;
+			/*border: 1px solid #f40;*/
+		}
+		p{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			font-size: 20px;
+			text-align: center;
+			line-height: 100px;
+
+		}
+		input{
+			width: 200px;
+			height: 50px;
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			left: 120px;
+			border-radius: 10px;
+			border: none;
+		}
+		button{
+			background-color: #f40;
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			left: 330px;
+			height: 50px;
+			width: 100px;
+			border-radius: 10px;
+			border: none;
+		}
+		.string{
+			position: absolute;
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="bottom">
+			<div class="content">
+				<p>输入弹幕：</p>
+				<input type="text" placeholder="输入弹幕内容" />
+				<button type="button" id="button">发送弹幕</button>
+			</div>
+		</div>
+	</div>
+	<script src="jquery3.3.1.js"></script>
+	<script>
+		$(function(){
+			var bigDiv = document.querySelector('.box');
+			var oTop,oRight;
+			var pageWidth = parseInt($(document).width());
+			var pageHeight = parseInt($(document).height());
+
+			// 调用函数
+			$('button').bind('click',play);
+
+			document.onkeydown= function(e){
+				if(e.keyCode == 13){
+					play();
+				}
+			}
+			// 弹幕发出到运动再结束
+			function play(){
+
+				let Value = $('input').val();
+
+				let creSpan = $('<span class="string"></span>').text(Value);
+				// alert(creSpan);
+				$('input').val('');
+				oTop = Math.floor(Math.random()*pageHeight);
+				// alert(oTop);
+				creSpan.css({'top':oTop,'right':-200,'color':getColor()});
+				$('.box').append(creSpan);
+				let lastSpan = $('.box>span:last-child');
+				// 动画
+				lastSpan.animate({'right':pageWidth+200},10000,function(){
+					$(this).remove();
+				})
+			}
+
+			function getColor(){
+				let color = '';
+				let arr = ['a','b','c','d','e','f','1','2','3','4','5','6','7','8','9'];
+				for(let i = 0;i < 6;i ++){
+					color+=arr[Math.floor(Math.random()*15)];
+				}
+				return '#'+color;
+				// return 'rgb(220,22,222)';*255
+			}
+		})
+	</script>
+</body>
+</html>
