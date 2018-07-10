@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟打地鼠游戏</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			height: 600px;
+			width: 600px;
+			margin: 20px auto;
+		}
+		span{
+			border: 1px solid #ccc;
+			
+			margin-right: -8px;
+			margin-top: -4px;
+			height: 200px;
+			width: 200px;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+	<script>
+		var Ospan = document.getElementsByTagName('span');
+		var num;
+		function init(){
+			num = Math.floor(Math.random()*9);
+			Ospan[num].style.backgroundColor = '#000';
+		}
+		
+		init();
+		for(i=0;i<9;i++){
+			Ospan[i].index=i;
+			Ospan[i].onclick = function(){
+				var dic = this.index;
+				if(this.index == num){
+						Ospan[this.index].style.backgroundColor = '#f40';
+
+					
+					
+					init();	
+					// 判断当num值与this.index的值一样，如果用setTimeout(),会显示不出来黑色
+					if(num == this.index){
+
+					}else{
+						setTimeout(function(){
+							Ospan[dic].style.backgroundColor = '#fff';
+						},500)
+					}
+
+				}else{
+					alert("try again！！")
+				}	
+			}
+		}
+	</script>
+</body>
+</html>
